@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'blogapp/base.html' %}
+{% block title_content%}Update Blog{%endblock%}
+
+{% block content%}
+
+<div class="container border border-primary m-5">
+<h2 class=" border blue primary" >Update Blog</h2>
+<div class="alert alert-success" role="alert">
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    alert:
+<div class="login-container md-5">
+    <form enctype="multipart/form-data"  method="POST" >
+        {{form.as_p}}
+        {%csrf_token%}
+        <input type="file" name = 'image'class="form-control">
+
+        <input type="submit" value="Create Blog" class="btn success">
+    </form>
+</div>
+</div>
+{%endblock%}

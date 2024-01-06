@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'blogapp/base.html' %}
+{% block title_content%}blog Details{%endblock%}
+
+{% block content%}
+{%for blog in blog_obj%}
+
+
+
+<div class="container text-center">
+    <article>
+        <h2>{{blog.title}}</h2><br>
+        <img src="/media/{{blog.image}}" height="800" width="800"><br><br><br>
+        <p>{{blog.content|safe}}</p>
+        <h3>Auther :- {{blog.user.username}}</h3>
+        <p class="post-meta">Created At :- {{blog.created_at}}</p>
+    </article>
+</div>
+</main>
+{%endfor%}
+{%endblock%}

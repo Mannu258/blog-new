@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'blogapp/base.html' %}
+{% block title_content%}Login{%endblock%}
+{% block css%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">{%endblock%}
+{% block content%}
+
+</head>
+
+<body>
+    <input type="hidden" id="csrf" value="{{csrf_token}}">
+    <div class="middle">
+        <h2>Login</h2>
+        <div class="login-container">
+            <form method="post">
+                {{form.as_p}}
+                {%csrf_token%}
+
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+{%endblock%}

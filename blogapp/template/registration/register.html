@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'blogapp/base.html' %}
+{% block title_content%}Register{%endblock%}
+{% block css%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href='{% static "/css/register.css" %}'>{%endblock%}
+{% block content%}
+
+<div class="container">
+    <div class="alert alert-warning" role="alert">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div class="registration-container">
+        <form class="registration-form" action="#" method="post">
+            <div class="inp">
+                <h2>Register</h2>
+
+                {%csrf_token%}
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="name" id="name" name="name" placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+                </div>
+                
+                <div class="input-group">
+                    <label for="number">Number:</label>
+                    <input type="text" id="number" name="number" value="+91" ">
+            
+                </div>
+                
+                
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                    <button class="btn btn-success" type="submit">Register</button>
+                </div>
+                
+               
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+</div>
+{%endblock%}
