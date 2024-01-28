@@ -2,7 +2,8 @@
 {% extends 'blogapp/base.html' %}
 {% block title_content%}My blog{%endblock%}
 {% load static %}
-{% block css%}<link rel="stylesheet" type="text/css" href='{% static "/css/main.css" %}'>{%endblock%}
+{% block css%}
+<link rel="stylesheet" type="text/css" href='{% static "/css/home.css" %}'>{%endblock%}
 
 
 
@@ -18,56 +19,55 @@
     </ul>
     {% endif %}
   </div>
-<!-- 
 
-  <div class="h-100 d-flex align-items-center">
-  {% for blog in blog %}
-  <section class="posts">
-    <article>
-      <a href="{% url 'blog_detail' blog.slug %}" class="center p-5">{{blog.user.username}}</a><br>
-      <img src="/media/{{blog.image}}" alt="">
-      <a href=""></a>
-      <h3>{{blog.created_at}}</h3>
-      <h2>{{blog.title}}</h2>
-      <a href="#">Read more</a>
-    </article>
-    <hr>
-    {%endfor%}
-  </section>
-</main>
-
-<footer>
-  <p>&copy; 2023 My Blog</p>
-</footer>
-</div> -->
-<div class="container text-center">
+  <div class="container text-center">
     <header>
-        <h1>Home Blog</h1>
-    <main>
-      {% if blog %}
-      {% for blog in blog %}
+      <h1>Home Blog</h1>
+      <main>
+        {% if blog %}
+        {% for blog in blog %}
         <article>
           <!-- {{blog.id}} -->
-            <h2>{{blog.title}}</h2><br>
-            <img src="/media/{{blog.image}}" height="400" width="400">
-            <p>{{blog.content|truncatewords:25 |safe}}</p>
-            <h4><a href="{% url 'blog_detail' blog.slug %}">See full blog</a></h4>
-            <h3>Auther :- {{blog.user.username}}</h3>
-            <p class="post-meta">Created At :- {{blog.created_at}}</p>
+          <h2><a href="{% url 'blog_detail' blog.slug %}">{{blog.title}}</a></h2><br>
+          <img src="/media/{{blog.image}}">
+          <p>{{blog.content|truncatewords:25 |safe}}</p>
+          <h4><a href="{% url 'blog_detail' blog.slug %}">See full blog</a></h4>
+          <h3>Auther :- {{blog.user.username}}</h3>
+          <p class="post-meta">Created At :- {{blog.created_at}}</p>
+          <br><br><br>
         </article>
-        <br><hr><br><br>
+        <br>
+        <hr><br><br>
         {%endfor%}
-        
+
         {%else%}
         <h1>No Blog Has Been Posted</h1>
         {%endif%}
-        
-      
-        
-      </div>
-    </main>
-    
-    {%endblock%}
-    
 
 
+
+  </div>
+</main>
+<script>
+
+  setInterval(function random() {
+    var h1 = document.querySelectorAll('h1')
+    var h2 = document.querySelectorAll('h2')
+    var p = document.querySelectorAll('p')
+
+    var x = Math.floor(Math.random() * 255);
+    var y = Math.floor(Math.random() * 255);
+    var z = Math.floor(Math.random() * 255);
+    var bgcolor = "rgb(" + x + "," + y + "," + z + ")";
+    var bgcolor2 = "rgb(" + z + "," + x + "," + x + ")";
+
+
+    h1[0].style.color = bgcolor
+
+
+
+  }, 800)
+
+</script>
+</script>
+{%endblock%}

@@ -4,39 +4,41 @@
 
 {% block content%}
 <div class="alert alert-success" role="alert">
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    alert:
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  alert:
 
-  </div>
+</div>
+
 
 {% if blog_objs %}
- {% for blog in  blog_objs %}
- <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Blog Title</th>
-        <th scope="col">Created at</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td>{{blog.title}}</td>
-        <td>{{blog.created_at}}</td>
-        <td><a href="{% url 'blog_update' blog.slug %}" class="btn btn-success">Update</a></td>
-        <td><a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a></td>
+{% for blog in blog_objs %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Blog Title</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{blog.title}}</td>
+      <td>{{blog.created_at}}</td>
+      <td><a href="{% url 'blog_update' blog.slug %}" class="btn btn-success">Update</a></td>
+      <td><a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete</a></td>
 
-      </tr>
-    </tbody>
-  </table>
+    </tr>
+  </tbody>
+</table>
+
 
 {% endfor %}
 
@@ -44,4 +46,5 @@
 {% else %}
 <h2>No POST</h2>
 {% endif %}
+
 {%endblock%}
